@@ -21,11 +21,11 @@ public class ShowContent {
     public static void main(String[] args) {
         InputStream in=null;
         try {
-            in=new URL("hdfs://192.168.28.136/output/weibo1/part-r-00000").openStream();
+            String path = "/usr/aa/b.txt";
+            in=new URL("hdfs://centos201:9000"+path).openStream();
+            // true 是否关闭数据流，如果是false，就在finally里关掉
             IOUtils.copyBytes(in, System.out, 2048,false);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        }  catch (Exception e) {
             e.printStackTrace();
         }finally{
             IOUtils.closeStream(in);
